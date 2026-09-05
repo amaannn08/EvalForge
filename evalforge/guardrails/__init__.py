@@ -10,6 +10,8 @@ from evalforge.guardrails.base import (
 from evalforge.guardrails.pii import PIIGuardrail, luhn_checksum, calculate_shannon_entropy
 from evalforge.guardrails.injection import PromptInjectionGuardrail
 from evalforge.guardrails.toxicity import ToxicityGuardrail
+from evalforge.guardrails.schema import SchemaValidationGuardrail
+from evalforge.guardrails.budget import CostBudgetGuardrail
 
 __all__ = [
     "BaseGuardrail",
@@ -22,4 +24,6 @@ __all__ = [
     "calculate_shannon_entropy",
     "PromptInjectionGuardrail",
     "ToxicityGuardrail",
+    "SchemaValidationGuardrail",
+    "CostBudgetGuardrail",
 ]
