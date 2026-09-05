@@ -12,6 +12,11 @@ from evalforge.guardrails.injection import PromptInjectionGuardrail
 from evalforge.guardrails.toxicity import ToxicityGuardrail
 from evalforge.guardrails.schema import SchemaValidationGuardrail
 from evalforge.guardrails.budget import CostBudgetGuardrail
+from evalforge.guardrails.pipeline import (
+    ExecutionMode,
+    GuardrailPipeline,
+    PipelineResult,
+)
 
 __all__ = [
     "BaseGuardrail",
@@ -26,4 +31,7 @@ __all__ = [
     "ToxicityGuardrail",
     "SchemaValidationGuardrail",
     "CostBudgetGuardrail",
+    "ExecutionMode",
+    "GuardrailPipeline",
+    "PipelineResult",
 ]
