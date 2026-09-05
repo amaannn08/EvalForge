@@ -9,6 +9,19 @@ from evalforge.evaluators.lexical import (
     RougeEvaluator,
     BleuEvaluator,
 )
+from evalforge.evaluators.judge import (
+    BaseJudgeProvider,
+    MockJudgeProvider,
+    RubricCriterion,
+    JudgeEvaluator,
+    RELEVANCE_RUBRIC,
+    FAITHFULNESS_RUBRIC,
+    COHERENCE_RUBRIC,
+)
+from evalforge.evaluators.composite import (
+    CompositeScorer,
+    CompositeEvaluationResult,
+)
 
 __all__ = [
     "BaseEvaluator",
@@ -19,4 +32,13 @@ __all__ = [
     "LevenshteinSimilarityEvaluator",
     "RougeEvaluator",
     "BleuEvaluator",
+    "BaseJudgeProvider",
+    "MockJudgeProvider",
+    "RubricCriterion",
+    "JudgeEvaluator",
+    "RELEVANCE_RUBRIC",
+    "FAITHFULNESS_RUBRIC",
+    "COHERENCE_RUBRIC",
+    "CompositeScorer",
+    "CompositeEvaluationResult",
 ]
