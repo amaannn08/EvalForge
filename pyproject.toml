@@ -1,0 +1,59 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "evalforge"
+version = "0.1.0"
+description = "Production LLM Evaluation & Guardrails Platform"
+readme = "README.md"
+requires-python = ">=3.11"
+authors = [
+    { name = "Amaan Gupta", email = "amaannn.gupta.08@gmail.com" }
+]
+keywords = [
+    "llm-evaluation",
+    "guardrails",
+    "tracing",
+    "observability",
+    "statistical-testing",
+    "ci-cd",
+    "fastapi"
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Topic :: Software Development :: Quality Assurance",
+]
+dependencies = [
+    "pydantic>=2.5.0",
+    "fastapi>=0.109.0",
+    "uvicorn>=0.27.0",
+    "sqlalchemy>=2.0.25",
+    "typer>=0.9.0",
+    "rich>=13.7.0",
+    "httpx>=0.26.0",
+    "pyyaml>=6.0.1",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0.0",
+    "pytest-asyncio>=0.23.0",
+    "pytest-cov>=4.1.0",
+]
+
+[project.scripts]
+evalforge = "evalforge.cli.main:app"
+
+[tool.setuptools.packages.find]
+include = ["evalforge*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+asyncio_mode = "auto"
+python_files = ["test_*.py"]
+python_functions = ["test_*"]
