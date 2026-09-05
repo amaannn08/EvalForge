@@ -1,0 +1,43 @@
+# EvalForge Production Pipeline Configuration
+version: "0.1.0"
+project: "Production-QA-Assurance"
+
+evaluation:
+  dataset: "examples/benchmarks/qa_benchmark.json"
+  pass_threshold: 0.70
+  metrics:
+    - name: "token_f1"
+      weight: 0.25
+      pass_threshold: 0.60
+    - name: "rougeL"
+      weight: 0.25
+      pass_threshold: 0.50
+    - name: "levenshtein_similarity"
+      weight: 0.20
+      pass_threshold: 0.65
+    - name: "judge_relevance"
+      weight: 0.30
+      pass_threshold: 0.60
+
+guardrails:
+  execution_mode: "COLLECT_ALL"
+  guards:
+    - name: "pii"
+      action: "REDACT"
+      redaction_mode: "MASK"
+      entropy_threshold: 4.2
+    - name: "injection"
+      action: "BLOCK"
+      risk_threshold: 0.45
+    - name: "toxicity"
+      action: "BLOCK"
+      threshold: 0.30
+    - name: "budget"
+      action: "WARN"
+      max_latency_ms: 2500
+      max_total_tokens: 4096
+
+statistical_gate:
+  alpha: 0.05
+  regression_threshold: 0.02
+  max_latency_regression_pct: 20.0

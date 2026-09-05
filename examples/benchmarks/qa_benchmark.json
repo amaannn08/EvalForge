@@ -1,0 +1,74 @@
+[
+  {
+    "input_prompt": "What is the capital city of France?",
+    "system_prompt": "You are a factual geography assistant.",
+    "expected_output": "The capital city of France is Paris.",
+    "tags": ["geography", "factual"]
+  },
+  {
+    "input_prompt": "Explain the time complexity of binary search on a sorted array of size n.",
+    "system_prompt": "You are an algorithms instructor.",
+    "expected_output": "Binary search has a logarithmic time complexity of O(log n) because it divides the search interval in half each iteration.",
+    "tags": ["algorithms", "computer_science"]
+  },
+  {
+    "input_prompt": "State Newton's second law of motion.",
+    "system_prompt": "You are a physics tutor.",
+    "expected_output": "Newton's second law states that force equals mass times acceleration (F = m * a).",
+    "tags": ["physics", "science"]
+  },
+  {
+    "input_prompt": "What is the function of the mitochondria in eukaryotic cells?",
+    "system_prompt": "You are a biology tutor.",
+    "expected_output": "Mitochondria generate most of the cell's ATP supply through oxidative phosphorylation, often referred to as the powerhouse of the cell.",
+    "tags": ["biology", "science"]
+  },
+  {
+    "input_prompt": "How does asymmetric cryptography differ from symmetric cryptography?",
+    "system_prompt": "You are a cybersecurity expert.",
+    "expected_output": "Asymmetric cryptography uses a public and private key pair, whereas symmetric cryptography uses a single shared key for both encryption and decryption.",
+    "tags": ["security", "cryptography"]
+  },
+  {
+    "input_prompt": "Solve 15 * 14 without a calculator.",
+    "system_prompt": "You are a math assistant.",
+    "expected_output": "210",
+    "tags": ["math", "arithmetic"]
+  },
+  {
+    "input_prompt": "What is the purpose of database indexing?",
+    "system_prompt": "You are a database engineer.",
+    "expected_output": "Database indexes improve the speed of data retrieval operations on a table at the cost of additional storage and slower writes.",
+    "tags": ["database", "systems"]
+  },
+  {
+    "input_prompt": "Define the concept of polymorphism in object-oriented programming.",
+    "system_prompt": "You are a software engineering professor.",
+    "expected_output": "Polymorphism is the ability of different classes to respond to the same interface or method call in their own specific way.",
+    "tags": ["oop", "software_engineering"]
+  },
+  {
+    "input_prompt": "What causes ocean tides on Earth?",
+    "system_prompt": "You are an astronomy and planetary science tutor.",
+    "expected_output": "Ocean tides are primarily caused by the gravitational pull of the Moon and the Sun acting on Earth's oceans.",
+    "tags": ["astronomy", "earth_science"]
+  },
+  {
+    "input_prompt": "What is the role of an operating system kernel?",
+    "system_prompt": "You are an operating systems engineer.",
+    "expected_output": "The kernel is the core component of an OS that manages hardware resources, memory, CPU scheduling, and process isolation.",
+    "tags": ["os", "systems"]
+  },
+  {
+    "input_prompt": "What is the difference between a process and a thread?",
+    "system_prompt": "You are a systems programmer.",
+    "expected_output": "A process is an executing program with its own independent address space, while threads share the address space and resources of their parent process.",
+    "tags": ["concurrency", "systems"]
+  },
+  {
+    "input_prompt": "Why is the Shannon entropy metric significant in information theory?",
+    "system_prompt": "You are an information theorist.",
+    "expected_output": "Shannon entropy quantifies the expected amount of information, uncertainty, or surprise inherent in a random variable's possible outcomes.",
+    "tags": ["information_theory", "math"]
+  }
+]
