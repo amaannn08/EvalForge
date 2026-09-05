@@ -88,8 +88,8 @@ class RegressionReport:
             "latencies_ms": {
                 "baseline_p50": round(self.baseline_latency_p50, 2),
                 "candidate_p50": round(self.candidate_latency_p50, 2),
-                "baseline_p95": round(self.baseline_latency_p95, 2),
-                "candidate_p95": round(self.candidate_latency_p95, 2),
+                "baseline_latency_p95": round(self.baseline_latency_p95, 2),
+                "candidate_latency_p95": round(self.candidate_latency_p95, 2),
                 "p95_change_pct": round(self.latency_p95_change_pct, 2),
             },
             "gate_reason": self.gate_reason,
@@ -188,12 +188,26 @@ class StatisticalRegressionDetector:
         rel_change = (mean_delta / base_mean * 100.0) if base_mean > 0 else 0.0
 
         std_delta = statistics.stdev(deltas) if n > 1 else 0.0
-        se = (std_delta / math.sqrt(n)) if n > 1 else 0.0
-        t_stat = (mean_delta / se) if se > 0 else 0.0
-        p_val = student_t_p_value(t_stat, df=n - 1) if n > 1 else 1.0
-        is_sig = p_val < self.alpha
+        if std_delta == 0.0:
+            if abs(mean_delta) > 1e-9:
+                se = 0.0
+                t_stat = 1e6 if mean_delta > 0 else -1e6
+                p_val = 0.0
+                is_sig = True
+                cohens_d = 100.0 if mean_delta > 0 else -100.0
+            else:
+                se = 0.0
+                t_stat = 0.0
+                p_val = 1.0
+                is_sig = False
+                cohens_d = 0.0
+        else:
+            se = (std_delta / math.sqrt(n)) if n > 1 else 0.0
+            t_stat = (mean_delta / se) if se > 0 else 0.0
+            p_val = student_t_p_value(t_stat, df=n - 1) if n > 1 else 1.0
+            is_sig = p_val < self.alpha
+            cohens_d = (mean_delta / std_delta) if std_delta > 0 else 0.0
 
-        cohens_d = (mean_delta / std_delta) if std_delta > 0 else 0.0
         ci = bootstrap_confidence_interval(deltas, confidence=0.95)
 
         paired_comparison = PairedMetricComparison(

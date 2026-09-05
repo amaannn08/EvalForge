@@ -11,6 +11,8 @@ from pydantic import BaseModel, Field
 
 class TestCase(BaseModel):
     """A single evaluation benchmark test case."""
+    __test__ = False  # Prevent pytest from treating this as a test class
+
     id: Optional[str] = None
     input_prompt: str
     system_prompt: Optional[str] = None
